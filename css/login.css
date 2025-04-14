@@ -85,6 +85,7 @@ main{
     justify-content: center;
 }
 
+
 .container img{
     width: 300px;
     height: auto;
@@ -101,4 +102,8 @@ main{
     background-color: var(--verdeContraste);
     border: 1px solid var(--verdeClaro);
     cursor: pointer;
+}
+a{
+    text-decoration: none;
+    color: white;
 }
