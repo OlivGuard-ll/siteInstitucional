@@ -12,11 +12,11 @@
 
 <body>
     <header>
-        <a href="../index.html"><img src="../imgs/img/logoOlivGuard 1.png" alt="" srcset="" /></a>
+        <a href="index.html"><img src="../imgs/img/logoOlivGuard 1.png" alt="" srcset="" /></a>
 
         <nav>
             <ul>
-                <li><a href="../index.html">Início</a></li>
+                <li><a href="index.html">Início</a></li>
                 <li><a href="cadastro.html">Quero fazer cadastro</a></li>
             </ul>
         </nav>
@@ -33,10 +33,12 @@
                 <div class="containerInputs">
                     <input type="text" id="input_email" placeholder="Email">
 
-                    <input type="text" id="input_senha" placeholder="Senha"> 
+                    <input type="text" id="input_senha" placeholder="Senha">
                 </div>
 
-                <button>Entrar</button>
+                <button  onclick="validar()">
+                    Entrar
+                </button>
 
             </div>
 
@@ -46,11 +48,11 @@
             <div class="container">
                 <img src="../imgs/img/logoOlivGuard 2.svg" alt="" srcset="">
 
-            <h3>Ainda não tem sua conta? crie e junte-se a nós nessa jornada</h3>
+                <h3>Ainda não tem sua conta? crie e junte-se a nós nessa jornada</h3>
 
-            <button>
-                <a href="cadastro.html">Cadastre-se</a> 
-            </button>
+                <button>
+                    <a href="cadastro.html">Cadastre-se</a>
+                </button>
             </div>
         </section>
 
@@ -59,3 +61,26 @@
 </body>
 
 </html>
+
+<script>
+    function validar() {
+        var email = input_email.value;
+        var senha = input_senha.value;
+
+        if (email.endsWith('@gmail.com') == false && email.endsWith('@sptech.school') == false) {
+            alert('Verifique seu Email')
+            console.log(email.endsWith('@gmail.com'))
+        } else if (senha.length < 8) {
+            alert("A Senha deve ter no mínimo 8 carateres")
+        }else {
+            console.log("pqppqpq")
+            input_senha.value = '';
+            input_email.value = '';
+            window.location.href = "index.html";
+        }
+
+
+    }
+
+
+</script>

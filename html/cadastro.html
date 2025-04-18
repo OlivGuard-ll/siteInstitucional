@@ -1,52 +1,93 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cadastro - OlivGuard</title>
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/cadastro.css" />
-    <link
-      rel="shortcut icon"
-      type="imagex/png"
-      href="../imgs/icons/icons8-oliva-50.png"
-    />
-  </head>
 
-  <body>
-    <header>
-      <a href="../index.html"
-        ><img src="../imgs/img/logoOlivGuard 1.png" alt="" srcset=""
-      /></a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro - OlivGuard</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/cadastro.css" />
+  <link rel="shortcut icon" type="imagex/png" href="../imgs/icons/icons8-oliva-50.png" />
+</head>
 
-      <nav>
-        <ul>
-          <li><a href="../index.html">Início</a></li>
-          <li><a href="login.html">Login</a></li>
-        </ul>
-      </nav>
-    </header>
+<body>
+  <header>
+    <a href="index.html"><img src="../imgs/img/logoOlivGuard 1.png" alt="" srcset="" /></a>
 
-    <main>
-      <section class="esquerda">
-        <img src="../imgs/img/cadastro.jpg" alt="" />
-      </section>
+    <nav>
+      <ul>
+        <li><a href=" index.html">Início</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
 
-      <section class="direita">
-        <div class="container">
-          <h1>Crie sua conta!</h1>
-          <h3>Preencha com seus dados</h3>
+  <main>
+    <section class="esquerda">
+      <img src="../imgs/img/cadastro.jpg" alt="" />
+    </section>
 
-          <div class="inputs">
-            <input type="text" placeholder="CNPJ"/>
-            <input type="text" placeholder="Email"/>
-            <input type="text" placeholder="Senha"/>
-            <input type="text" placeholder="Repetir senha"/>
-            <p>Já está cadastrado? <a href="./login.html">Conecte-se</a></p>
-            <button>Finalizar cadastro</button>
-          </div>
+    <section class="direita">
+      <div class="container">
+        <h1>Crie sua conta!</h1>
+        <h3>Preencha com seus dados</h3>
+
+        <div class="inputs">
+
+          <input type="text" oninput="formatarCNPJ()" id="inp_cnpj" placeholder="CNPJ" maxlength="18" />
+          <input type="text" placeholder="Email" id="inp_email" />
+          <input type="text" placeholder="Senha" id="inp_senha" />
+          <input type="text" placeholder="Repetir senha" id="inp_senha_repeticao" />
+          <p>Já está cadastrado? <a href="./login.html">Conecte-se</a></p>
+          <button onclick="autenticar()">
+            Finalizar cadastro
+          </button>
         </div>
-      </section>
-    </main>
-  </body>
+      </div>
+    </section>
+  </main>
+</body>
+
 </html>
+
+<script>
+  function formatarCNPJ() {
+    var cnpj = inp_cnpj.value.replaceAll(".", "").replaceAll("-", "").replaceAll("/", "");
+    var formatado = '';
+    for (var i = 0; i < cnpj.length; i++) {
+      formatado += cnpj[i];
+      if (i == 1 || i == 4) {
+        formatado += ".";
+      } else if (i == 7) {
+        formatado += "/";
+      }
+      else if (i == 11) {
+        formatado += "-";
+      }
+      inp_cnpj.value = formatado
+    }
+  }
+  function autenticar() {
+    var cnpj = inp_cnpj.value;
+    var senha = inp_senha.value
+    var senhaTwo = inp_senha_repeticao.value;
+    var email = inp_email.value;
+    console.log(senha.length)
+    if (cnpj == '' || senha == '' || senhaTwo == '' || email == '') {
+      alert('Cadastro Incomopleto.')
+    } else if (email.endsWith('@gmail.com') == false && email.endsWith('@sptech.school') == false) {
+      alert('Verifique seu Email')
+      console.log(email.endsWith('@gmail.com'))
+    } else if (senha.length < 8) {
+      alert("A Senha deve ter no mínimo 8 carateres")
+    } else if (senha != senhaTwo) {
+      alert('verifique sua Senha')
+    } else {
+      inp_cnpj.value = '';
+      inp_senha.value = '';
+      inp_senha_repeticao.value = '';;
+      inp_email.value = '';
+      window.location.href = "login.html";
+    }
+  }
+</script>

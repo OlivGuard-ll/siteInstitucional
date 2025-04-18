@@ -4,23 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OlivGuard</title>
-    <link rel="stylesheet" href="./css/index.css">
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/style.css" />
     <link
       rel="shortcut icon"
       type="imagex/png"
-      href="./imgs/icons/icons8-oliva-50.png"
+      href="../imgs/icons/icons8-oliva-50.png"
     />
   </head>
   <body>
     <header>
-        <a href="index.html"><img src="./imgs/img/logoOlivGuard 1.png" alt="" srcset="" /></a>
+        <a href="index.html"><img src="../imgs/img/logoOlivGuard 1.png" alt="" srcset="" /></a>
 
       <nav>
         <ul>
           <li><a href="index.html">Início</a></li>
           <li><a href="#cards">Sobre nós</a></li>
-          <li><a href="./html/login.html">Login</a></li>
+          <li><a href="login.html">Login</a></li>
         </ul>
       </nav>
     </header>
@@ -99,7 +99,7 @@
         <input type="text" id="input_nome" />
 
         <label for="input_telefone">Telefone:</label>
-        <input type="text" id="input_telefone" />
+        <input type="text" id="input_telefone" oninput="validar()" maxlength="15"/>
 
         <label for="input_email">Email:</label>
         <input type="text" id="input_email" />
@@ -123,3 +123,19 @@
     </footer>
   </body>
 </html>
+
+<script>
+  function validar(){
+    var tele = input_telefone.value.replace(/\D/g, '');
+    var caracterAtual = ''
+    for(var i = 0; i < tele.length; i++){
+      caracterAtual += tele[i];
+      if(i == 1){
+        caracterAtual += " ";
+       }else if(i == 6){
+        caracterAtual += "-";
+      }
+        input_telefone.value = caracterAtual
+    }
+  }
+</script>
