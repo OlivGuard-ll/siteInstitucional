@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Início | OlivGuard</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/style.css" />
+    <link
+      rel="shortcut icon"
+      type="imagex/png"
+      href="../imgs/icons/icons8-oliva-50.png"
+    />
+  </head>
+  <body>
+    <header>
+        <a href="index.html"><img src="../imgs/img/logoOlivGuard 1.png" alt="" srcset="" /></a>
+
+      <nav>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="dashboardSemLogin.html">Dashboard</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      
+        
+
+    </main>
+
+    <footer>
+      <form action="">
+        <label for="input_nome">Nome:</label>
+        <input type="text" id="input_nome" />
+
+        <label for="input_telefone">Telefone:</label>
+        <input type="text" id="input_telefone" oninput="validar()" maxlength="15"/>
+
+        <label for="input_email">Email:</label>
+        <input type="text" id="input_email" />
+
+        <label for="input_mensagem">Mensagem:</label>
+        <input type="text" id="input_mensagem" />
+
+        <button>Enviar</button>
+      </form>
+
+      <div class="faleConosco">
+        <h1>Fale conosco</h1>
+        <p>
+          Estamos aqui para ajudar! Se você tiver dúvidas, sugestões ou precisar
+          de mais informações sobre os nossos serviços de monitoramento de solo,
+          entre em contato conosco. Preencha o formulário ao lado e nossa equipe
+          entrará em contato o mais breve possível. A OlivGuard valoriza seu
+          feedback e está sempre à disposição para atender suas necessidades.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<script>
+  function validar(){
+    var tele = input_telefone.value.replace(/\D/g, '');
+    var caracterAtual = ''
+    for(var i = 0; i < tele.length; i++){
+      caracterAtual += tele[i];
+      if(i == 1){
+        caracterAtual += " ";
+       }else if(i == 6){
+        caracterAtual += "-";
+      }
+        input_telefone.value = caracterAtual
+    }
+  }
+</script>

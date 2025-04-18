@@ -66,14 +66,14 @@ input {
   transition: 0.3s;
 }
 
-.inputs p{
-    margin: 10px 0;
-    color: #fff;
+.inputs p {
+  margin: 10px 0;
+  color: #fff;
 }
 
-.inputs a{
-    text-decoration: none;
-    color: var(--verdeClaro);
+.inputs a {
+  text-decoration: none;
+  color: var(--verdeClaro);
 }
 
 button {
@@ -85,9 +85,26 @@ button {
   border-radius: 10px;
   cursor: pointer;
   transition: 0.3s;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
 
 input:focus {
   border: 2px solid var(--verdeClaro);
   scale: 1.03;
+}
+
+.voltar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: 5px;
+}
+
+.escondido {
+  display: none;
 }

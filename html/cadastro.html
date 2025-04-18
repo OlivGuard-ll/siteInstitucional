@@ -1,93 +1,154 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro - OlivGuard</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/cadastro.css" />
+    <link
+      rel="shortcut icon"
+      type="imagex/png"
+      href="../imgs/icons/icons8-oliva-50.png"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cadastro - OlivGuard</title>
-  <link rel="stylesheet" href="../css/style.css" />
-  <link rel="stylesheet" href="../css/cadastro.css" />
-  <link rel="shortcut icon" type="imagex/png" href="../imgs/icons/icons8-oliva-50.png" />
-</head>
+  <body>
+    <header>
+      <a href="index.html"
+        ><img src="../imgs/img/logoOlivGuard 1.png" alt="" srcset=""
+      /></a>
 
-<body>
-  <header>
-    <a href="index.html"><img src="../imgs/img/logoOlivGuard 1.png" alt="" srcset="" /></a>
+      <nav>
+        <ul>
+          <li><a href=" index.html">Início</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </nav>
+    </header>
 
-    <nav>
-      <ul>
-        <li><a href=" index.html">Início</a></li>
-        <li><a href="login.html">Login</a></li>
-      </ul>
-    </nav>
-  </header>
+    <main>
+      <section class="esquerda">
+        <img src="../imgs/img/cadastro.jpg" alt="" />
+      </section>
 
-  <main>
-    <section class="esquerda">
-      <img src="../imgs/img/cadastro.jpg" alt="" />
-    </section>
+      <section class="direita">
+        <div class="container">
+          <div class="inputs" id="etapa1">
+            <h1>Crie sua conta!</h1>
+            <h3>Preencha com seus dados</h3>
+            <input type="text" placeholder="Razão social" id="inp_razao" />
+            <input
+              type="text"
+              oninput="formatarCNPJ()"
+              id="inp_cnpj"
+              placeholder="CNPJ"
+              maxlength="18"
+            />
+            <input type="text" placeholder="Email" id="inp_email" />
+            <input type="password" placeholder="Senha" id="inp_senha" />
+            <input
+              type="password"
+              placeholder="Repetir senha"
+              id="inp_senha_repeticao"
+            />
+            <input type="text" placeholder="Telefone" id="inp_telefone" />
+            <button onclick="proximaEtapa()">Próxima etapa</button>
+            <p>Já está cadastrado? <a href="./login.html">Conecte-se</a></p>
+          </div>
 
-    <section class="direita">
-      <div class="container">
-        <h1>Crie sua conta!</h1>
-        <h3>Preencha com seus dados</h3>
-
-        <div class="inputs">
-
-          <input type="text" oninput="formatarCNPJ()" id="inp_cnpj" placeholder="CNPJ" maxlength="18" />
-          <input type="text" placeholder="Email" id="inp_email" />
-          <input type="text" placeholder="Senha" id="inp_senha" />
-          <input type="text" placeholder="Repetir senha" id="inp_senha_repeticao" />
-          <p>Já está cadastrado? <a href="./login.html">Conecte-se</a></p>
-          <button onclick="autenticar()">
-            Finalizar cadastro
-          </button>
+          <div class="inputs escondido" id="etapa2">
+            <button onclick="voltarEtapa()" class="voltar">
+              <img src="../imgs/icons/voltar.svg" />
+            </button>
+            <input type="text" id="inp_cep" placeholder="CEP" />
+            <input type="text" id="inp_rua" placeholder="Rua" />
+            <input type="text" id="inp_numero" placeholder="Número" />
+            <input
+              type="text"
+              id="inp_complemento"
+              placeholder="Complemento (opcional)"
+            />
+            <input type="text" id="inp_bairro" placeholder="Bairro" />
+            <input type="text" id="inp_cidade" placeholder="Cidade" />
+            <input type="text" id="inp_estado" placeholder="Estado" />
+            <button onclick="finalizarCadastro()">Finalizar Cadastro</button>
+          </div>
         </div>
-      </div>
-    </section>
-  </main>
-</body>
-
+      </section>
+    </main>
+  </body>
 </html>
 
 <script>
   function formatarCNPJ() {
-    var cnpj = inp_cnpj.value.replaceAll(".", "").replaceAll("-", "").replaceAll("/", "");
-    var formatado = '';
+    var cnpj = inp_cnpj.value
+      .replaceAll(".", "")
+      .replaceAll("-", "")
+      .replaceAll("/", "");
+    var formatado = "";
     for (var i = 0; i < cnpj.length; i++) {
       formatado += cnpj[i];
       if (i == 1 || i == 4) {
         formatado += ".";
       } else if (i == 7) {
         formatado += "/";
-      }
-      else if (i == 11) {
+      } else if (i == 11) {
         formatado += "-";
       }
-      inp_cnpj.value = formatado
+      inp_cnpj.value = formatado;
     }
   }
   function autenticar() {
     var cnpj = inp_cnpj.value;
-    var senha = inp_senha.value
+    var senha = inp_senha.value;
     var senhaTwo = inp_senha_repeticao.value;
     var email = inp_email.value;
-    console.log(senha.length)
-    if (cnpj == '' || senha == '' || senhaTwo == '' || email == '') {
-      alert('Cadastro Incomopleto.')
-    } else if (email.endsWith('@gmail.com') == false && email.endsWith('@sptech.school') == false) {
-      alert('Verifique seu Email')
-      console.log(email.endsWith('@gmail.com'))
+    console.log(senha.length);
+    if (cnpj == "" || senha == "" || senhaTwo == "" || email == "") {
+      alert("Cadastro Incomopleto.");
+    } else if (
+      email.endsWith("@gmail.com") == false &&
+      email.endsWith("@sptech.school") == false
+    ) {
+      alert("Verifique seu Email");
+      console.log(email.endsWith("@gmail.com"));
     } else if (senha.length < 8) {
-      alert("A Senha deve ter no mínimo 8 carateres")
+      alert("A Senha deve ter no mínimo 8 carateres");
     } else if (senha != senhaTwo) {
-      alert('verifique sua Senha')
+      alert("verifique sua Senha");
     } else {
-      inp_cnpj.value = '';
-      inp_senha.value = '';
-      inp_senha_repeticao.value = '';;
-      inp_email.value = '';
+      inp_cnpj.value = "";
+      inp_senha.value = "";
+      inp_senha_repeticao.value = "";
+      inp_email.value = "";
       window.location.href = "login.html";
     }
+  }
+
+  // função para avançar etapa
+  function proximaEtapa() {
+    const etapa1 = document.getElementById("etapa1"); // "pegando" o elemento que tem certo ID e armazenando numa variável
+    const etapa2 = document.getElementById("etapa2");
+
+    // adicionando/removendo a classe que esconde
+    etapa1.classList.add("escondido");
+    etapa2.classList.remove("escondido");
+  }
+
+  // função para voltar a etapa
+  function voltarEtapa() {
+    const etapa1 = document.getElementById("etapa1");
+    const etapa2 = document.getElementById("etapa2");
+
+    // adicionando/removendo a classe que esconde
+    etapa2.classList.add("escondido");
+    etapa1.classList.remove("escondido");
+  }
+
+  function finalizarCadastro() {
+    // pode adicionar aqui a verificação dos campos de endereço
+    alert("Cadastro finalizado!");
+    window.location.href = "login.html";
   }
 </script>
