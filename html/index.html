@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OlivGuard</title>
-    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/index.css" />
     <link rel="stylesheet" href="../css/style.css" />
     <link
       rel="shortcut icon"
@@ -14,12 +14,15 @@
   </head>
   <body>
     <header>
-        <a href="index.html"><img src="../imgs/img/logoOlivGuard 1.png" alt="" srcset="" /></a>
+      <a href="index.html"
+        ><img src="../imgs/img/logoOlivGuard 1.png" alt="" srcset=""
+      /></a>
 
       <nav>
         <ul>
           <li><a href="index.html">Início</a></li>
           <li><a href="sobre.html">Sobre nós</a></li>
+          <li><a href="simulador.html">Simulador Financeiro</a></li>
           <li><a href="dashboardSemLogin.html">Dashboard</a></li>
           <li><a href="login.html">Login</a></li>
         </ul>
@@ -52,7 +55,9 @@
           </div>
           <h2>Qualidade</h2>
           <p>
-            A OlivGuard oferece tecnologia de ponta para o monitoramento do solo em plantações de oliveiras, garantindo precisão, eficiência e sustentabilidade no cultivo.
+            A OlivGuard oferece tecnologia de ponta para o monitoramento do solo
+            em plantações de oliveiras, garantindo precisão, eficiência e
+            sustentabilidade no cultivo.
           </p>
         </div>
 
@@ -62,7 +67,9 @@
           </div>
           <h2>Sustentável</h2>
           <p>
-            A OlivGuard promove a sustentabilidade ao otimizar a irrigação com monitoramento preciso do solo, reduzindo desperdícios e incentivando uma agricultura ecológica. 
+            A OlivGuard promove a sustentabilidade ao otimizar a irrigação com
+            monitoramento preciso do solo, reduzindo desperdícios e incentivando
+            uma agricultura ecológica.
           </p>
         </div>
       </section>
@@ -83,8 +90,8 @@
             </p>
           </div>
           <div class="botoes">
-            <a href="">Saiba mais</a>
-            <a href="">Simulador financeiro</a>
+            <a href="sobre.html">Saiba mais</a>
+            <a href="simulador.html">Simulador financeiro</a>
           </div>
         </div>
       </section>
@@ -96,7 +103,12 @@
         <input type="text" id="input_nome" />
 
         <label for="input_telefone">Telefone:</label>
-        <input type="text" id="input_telefone" oninput="validar()" maxlength="15"/>
+        <input
+          type="text"
+          id="input_telefone"
+          oninput="validar()"
+          maxlength="15"
+        />
 
         <label for="input_email">Email:</label>
         <input type="text" id="input_email" />
@@ -122,17 +134,17 @@
 </html>
 
 <script>
-  function validar(){
-    var tele = input_telefone.value.replace(/\D/g, '');
-    var caracterAtual = ''
-    for(var i = 0; i < tele.length; i++){
+  function validar() {
+    var tele = input_telefone.value.replace(/\D/g, "");
+    var caracterAtual = "";
+    for (var i = 0; i < tele.length; i++) {
       caracterAtual += tele[i];
-      if(i == 1){
+      if (i == 1) {
         caracterAtual += " ";
-       }else if(i == 6){
+      } else if (i == 6) {
         caracterAtual += "-";
       }
-        input_telefone.value = caracterAtual
+      input_telefone.value = caracterAtual;
     }
   }
 </script>
