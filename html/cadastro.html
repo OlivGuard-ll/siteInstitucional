@@ -43,7 +43,7 @@
             <input type="text" placeholder="Razão social" id="inp_razao" />
             <input
               type="text"
-              oninput="formatarCNPJ()"
+              oninput="formatarFor()"
               id="inp_cnpj"
               placeholder="CNPJ"
               maxlength="18"
@@ -55,7 +55,7 @@
               placeholder="Repetir senha"
               id="inp_senha_repeticao"
             />
-            <input type="text" placeholder="Telefone" id="inp_telefone" />
+            <input type="text" placeholder="Telefone" id="inp_telefone" oninput="formatarFor()" maxlength="15"/>
             <button onclick="proximaEtapa()">Próxima etapa</button>
             <p>Já está cadastrado? <a href="./login.html">Conecte-se</a></p>
           </div>
@@ -64,7 +64,7 @@
             <button onclick="voltarEtapa()" class="voltar">
               <img src="../imgs/icons/voltar.svg" />
             </button>
-            <input type="text" id="inp_cep" placeholder="CEP" />
+            <input type="text" id="inp_cep" placeholder="CEP" oninput="formatarFor()" maxlength="9"/>
             <input type="text" id="inp_rua" placeholder="Rua" />
             <input type="text" id="inp_numero" placeholder="Número" />
             <input
@@ -84,11 +84,8 @@
 </html>
 
 <script>
-  function formatarCNPJ() {
-    var cnpj = inp_cnpj.value
-      .replaceAll(".", "")
-      .replaceAll("-", "")
-      .replaceAll("/", "");
+  function formatarFor() {
+    var cnpj = inp_cnpj.value.replace(/\D/g, "");
     var formatado = "";
     for (var i = 0; i < cnpj.length; i++) {
       formatado += cnpj[i];
@@ -101,21 +98,44 @@
       }
       inp_cnpj.value = formatado;
     }
+    var tele = inp_telefone.value.replace(/\D/g, "");
+    var caracterAtual = "(";
+    for (var i = 0; i < tele.length; i++) {
+      caracterAtual += tele[i];
+      if (i == 1) {
+        caracterAtual += ") ";
+      } else if (i == 6) {
+        caracterAtual += "-";
+      }
+      inp_telefone.value = caracterAtual;
+    };
+    var cep = inp_cep.value.replace(/\D/g, "");
+    var atual = '';
+    for(i = 0; i < cep.length; i++){
+      atual += cep[i];
+      if(i == 3){
+        atual += '-';
+      }
+      inp_cep.value = atual
+
+    }
   }
-  function autenticar() {
+  function proximaEtapa() {
+    const etapa1 = document.getElementById("etapa1"); 
+    const etapa2 = document.getElementById("etapa2");
+    var razaoSocial = inp_razao.value;
     var cnpj = inp_cnpj.value;
     var senha = inp_senha.value;
     var senhaTwo = inp_senha_repeticao.value;
     var email = inp_email.value;
     console.log(senha.length);
-    if (cnpj == "" || senha == "" || senhaTwo == "" || email == "") {
+    if (cnpj == "" || senha == "" || senhaTwo == "" || email == "" || razaoSocial == '') {
       alert("Cadastro Incomopleto.");
     } else if (
       email.endsWith("@gmail.com") == false &&
       email.endsWith("@sptech.school") == false
     ) {
       alert("Verifique seu Email");
-      console.log(email.endsWith("@gmail.com"));
     } else if (senha.length < 8) {
       alert("A Senha deve ter no mínimo 8 carateres");
     } else if (senha != senhaTwo) {
@@ -125,32 +145,18 @@
       inp_senha.value = "";
       inp_senha_repeticao.value = "";
       inp_email.value = "";
-      window.location.href = "login.html";
-    }
-  }
-
-  // função para avançar etapa
-  function proximaEtapa() {
-    const etapa1 = document.getElementById("etapa1"); // "pegando" o elemento que tem certo ID e armazenando numa variável
-    const etapa2 = document.getElementById("etapa2");
-
-    // adicionando/removendo a classe que esconde
     etapa1.classList.add("escondido");
-    etapa2.classList.remove("escondido");
+    etapa2.classList.remove("escondido"); 
+    } 
   }
 
-  // função para voltar a etapa
   function voltarEtapa() {
     const etapa1 = document.getElementById("etapa1");
     const etapa2 = document.getElementById("etapa2");
-
-    // adicionando/removendo a classe que esconde
     etapa2.classList.add("escondido");
     etapa1.classList.remove("escondido");
   }
-
   function finalizarCadastro() {
-    // pode adicionar aqui a verificação dos campos de endereço
     alert("Cadastro finalizado!");
     window.location.href = "login.html";
   }
