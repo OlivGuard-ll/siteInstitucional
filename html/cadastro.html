@@ -14,7 +14,6 @@
     <a href="index.html">
       <img src="../imgs/img/logoOlivGuard 1.png" alt="" />
     </a>
-
     <nav>
       <ul>
         <li><a href="index.html">Início</a></li>
@@ -65,12 +64,11 @@
     </section>
   </main>
 </body>
-
 </html>
 
 <script>
   function formatarFor() {
-    // Formatar CNPJ
+    // FORMATAR CNPJ
     var cnpj = inp_cnpj.value.replace(/\D/g, "");
     var cnpjFormatado = "";
     for (var i = 0; i < cnpj.length; i++) {
@@ -82,30 +80,34 @@
       }else if (i == 11){
         cnpjFormatado += "-";
       }
-    }
-    inp_cnpj.value = cnpjFormatado;
+    }inp_cnpj.value = cnpjFormatado;
 
-    // Formatar telefone
+    // FORMATAR TELEFONE
     var tel = inp_telefone.value.replace(/\D/g, "");
     var telFormatado = "";
     for (var i = 0; i < tel.length; i++) {
       telFormatado += tel[i];
-      if (i == 1) telFormatado += ") ";
-      else if (i == 0) telFormatado = "(" + tel[i];
-      else if (i == 6) telFormatado += "-";
+      if (i == 1){
+        telFormatado += ") ";
+      } else if (i == 0){
+        telFormatado = "(" + tel[i];
+      } else if (i == 6){
+        telFormatado += "-";
+      } 
     }
     inp_telefone.value = telFormatado;
 
-    // Formatar CEP
+    // FORMATAR CEP
     var cep = inp_cep.value.replace(/\D/g, "");
     var cepFormatado = "";
     for (var i = 0; i < cep.length; i++) {
       cepFormatado += cep[i];
-      if (i == 4) cepFormatado += "-";
+      if (i == 4){
+        cepFormatado += "-";
+      } 
     }
     inp_cep.value = cepFormatado;
   }
-
   function proximaEtapa() {
     const etapa1 = document.getElementById("etapa1");
     const etapa2 = document.getElementById("etapa2");
@@ -133,7 +135,6 @@
     document.getElementById("etapa1").classList.remove("escondido");
     document.getElementById("etapa2").classList.add("escondido");
   }
-
   function finalizarCadastro() {
     alert("Cadastro finalizado com sucesso!");
     window.location.href = "login.html";
