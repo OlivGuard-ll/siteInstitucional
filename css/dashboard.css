@@ -1,0 +1,107 @@
+.dashboard {
+  padding: 40px;
+  background: linear-gradient(to bottom right, #f3f6fa, #dbe3ee);
+  font-family: sans-serif;
+}
+
+.grafico-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.top,
+.bottom {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 10px;
+}
+
+.grafico-umidade-dia,
+.grafico-umidade-mensal {
+  width: 55%;
+}
+
+.grafico-pizza-container {
+  width: 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grafico-box,
+.grafico-box-resumo {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  height: 100%;
+}
+
+.grafico-box-resumo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grafico-cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.kpi-cards {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100px;
+}
+
+.kpi-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #e9e9e9;
+}
+
+.grafico-pizza {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  margin-bottom: 20px;
+}
+
+.indicadores-container {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.indicador {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.indicador h2 {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.indicador p {
+  font-size: 1.4rem;
+  font-weight: bold;
+}

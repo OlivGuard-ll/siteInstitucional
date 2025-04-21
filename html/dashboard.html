@@ -1,42 +1,123 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Início | OlivGuard</title>
-    <link rel="stylesheet" href="../css/dashboard.css">
+    <title>Dashboard - OlivGuard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="../css/dashboard.css" />
     <link rel="stylesheet" href="../css/style.css" />
-    <link
-      rel="shortcut icon"
-      type="imagex/png"
-      href="../imgs/icons/icons8-oliva-50.png"
-    />
   </head>
   <body>
     <header>
-        <a href="index.html"><img src="../imgs/img/logoOlivGuard 1.png" alt="" srcset="" /></a>
-
+      <a href="index.html">
+        <img src="../imgs/img/logoOlivGuard 1.png" alt="" />
+      </a>
       <nav>
         <ul>
           <li><a href="index.html">Início</a></li>
+          <li><a href="sobre.html">Sobre nós</a></li>
+          <li><a href="simulador.html">Simulador Financeiro</a></li>
           <li><a href="dashboardSemLogin.html">Dashboard</a></li>
+          <li><a href="login.html">Login</a></li>
         </ul>
       </nav>
     </header>
 
     <main>
-      
-        
+      <section class="dashboard">
+        <div class="grafico-container">
+          <div class="top">
+            <div class="grafico-umidade-dia">
+              <div class="grafico-box">
+                <div class="grafico-cabecalho">
+                  <h1>Umidade ao longo do dia</h1>
+                </div>
+                <div class="kpi-cards">
+                  <div class="kpi-card">
+                    <h4>Umidade Média do Dia</h4>
+                    <p>53.0%</p>
+                  </div>
+                  <div class="kpi-card">
+                    <h4>Máxima Umidade no Dia</h4>
+                    <p>70%</p>
+                  </div>
+                  <div class="kpi-card">
+                    <h4>Mínima Umidade no Dia</h4>
+                    <p>39%</p>
+                  </div>
+                </div>
+                <canvas id="graficoDiario"></canvas>
+              </div>
+            </div>
 
+            <div class="indicadores-container">
+              <div class="indicador">
+                <h2>Título</h2>
+                <p>Dado</p>
+              </div>
+              <div class="indicador">
+                <h2>Título</h2>
+                <p>Dado</p>
+              </div>
+              <div class="indicador">
+                <h2>Título</h2>
+                <p>Dado</p>
+              </div>
+              <div class="indicador">
+                <h2>Título</h2>
+                <p>Dado</p>
+              </div>
+              <div class="indicador">
+                <h2>Título</h2>
+                <p>Dado</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bottom">
+            <div class="grafico-umidade-mensal">
+              <div class="grafico-box">
+                <div class="grafico-cabecalho">
+                  <h1>Média diária de umidade</h1>
+                </div>
+                <div class="kpi-cards">
+                  <div class="kpi-card">
+                    <h4>Medições Abaixo de 40%</h4>
+                    <p>1460</p>
+                  </div>
+                  <div class="kpi-card">
+                    <h4>Medições 40% e 60%</h4>
+                    <p>2190</p>
+                  </div>
+                  <div class="kpi-card">
+                    <h4>Medições Acima de 80%</h4>
+                    <p>350</p>
+                  </div>
+                </div>
+                <canvas id="graficoMensal"></canvas>
+              </div>
+            </div>
+
+            <div class="grafico-pizza-container">
+              <div class="grafico-box-resumo">
+                <div class="grafico-pizza">
+                  <canvas id="graficoAnual"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer>
-      <form action="">
+      <form>
         <label for="input_nome">Nome:</label>
         <input type="text" id="input_nome" />
 
         <label for="input_telefone">Telefone:</label>
-        <input type="text" id="input_telefone" oninput="validar()" maxlength="15"/>
+        <input type="text" id="input_telefone" oninput="validar()" maxlength="15" />
 
         <label for="input_email">Email:</label>
         <input type="text" id="input_email" />
@@ -58,21 +139,48 @@
         </p>
       </div>
     </footer>
+
+    <script>
+      new Chart(document.getElementById("graficoDiario"), {
+        type: "line",
+        data: {
+          labels: ["00h", "02h", "04h", "06h", "08h", "10h", "12h", "14h", "16h", "18h", "20h", "22h"],
+          datasets: [{
+            label: "Umidade (%)",
+            data: [58, 56, 53, 52, 50, 42, 39, 60, 65, 70, 67, 64],
+            borderColor: "blue",
+            fill: false,
+            tension: 0.3,
+          }],
+        },
+        options: { responsive: true },
+      });
+
+      new Chart(document.getElementById("graficoMensal"), {
+        type: "bar",
+        data: {
+          labels: Array.from({ length: 30 }, (_, i) => `Dia ${i + 1}`),
+          datasets: [{
+            label: "Média Diária de Umidade (%)",
+            data: [50, 55, 40, 35, 38, 45, 50, 42, 58, 60, 45, 48, 52, 55, 65, 70, 60, 63, 50, 52, 40, 41, 55, 49, 48, 43, 45, 44, 42, 51],
+            backgroundColor: "teal",
+          }],
+        },
+        options: { responsive: true },
+      });
+
+      new Chart(document.getElementById("graficoAnual"), {
+        type: "pie",
+        data: {
+          labels: ["Abaixo da faixa ideal", "Dentro da faixa ideal", "Acima da faixa ideal"],
+          datasets: [{
+            label: "Distribuição Anual de Umidade",
+            data: [1460, 2190, 350],
+            backgroundColor: ["red", "green", "orange"],
+          }],
+        },
+        options: { responsive: true },
+      });
+    </script>
   </body>
 </html>
-
-<script>
-  function validar(){
-    var tele = input_telefone.value.replace(/\D/g, '');
-    var caracterAtual = ''
-    for(var i = 0; i < tele.length; i++){
-      caracterAtual += tele[i];
-      if(i == 1){
-        caracterAtual += " ";
-       }else if(i == 6){
-        caracterAtual += "-";
-      }
-        input_telefone.value = caracterAtual
-    }
-  }
-</script>
