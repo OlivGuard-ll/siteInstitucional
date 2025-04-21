@@ -33,7 +33,7 @@
 
         <div class="containerInputs">
           <input type="text" id="input_email" placeholder="E-mail" />
-          <input type="password" id="input_senha" placeholder="Senha" />
+          <input type="password" id="input_senha" placeholder="Senha"/>
         </div>
 
         <button onclick="validar()">
@@ -57,20 +57,29 @@
 </html>
 
 <script>
+  var contagem = 3;
   function validar() {
     var email = input_email.value;
     var senha = input_senha.value;
-
-    if (email != 'caramico@gmail.com') {
-      alert('Verifique seu e-mail.');
-    } else if (senha.length < 8) {
+    if (email != "caramico@gmail.com") {
+      alert("Verifique seu e-mail.");
+    }
+    if(senha.length < 8) {
       alert("A senha deve ter no mínimo 8 caracteres.");
-    }else if(senha != 'urubu1000'){
-      alert('Verifique sua senha.');
-    }else {
-      input_senha.value = '';
-      input_email.value = '';
+    }
+    if (email == "caramico@gmail.com" && senha == "urubu1000" && (contagem == 3 || contagem == 2 || contagem == 1)){
+      alert("✅ Usuário autenticado com sucesso!");
+      contagem = 0; 
+      input_email.value = "";
+      input_senha.value = "";
       window.location.href = "index.html";
+    } else {
+      contagem -= 1;
+      if(contagem <= 0){
+        alert("❌ Falha na autenticação, você usou todas suas tentativas tente mais tarde novamente.");
+      }else{
+        alert("❌ Falha na autenticação");
+      }
     }
   }
 </script>
