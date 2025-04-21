@@ -63,9 +63,11 @@
 
     if (email != 'caramico@gmail.com') {
       alert('Verifique seu e-mail.');
-    } else if (senha.length < 8 || senha != 'urubu1000') {
+    } else if (senha.length < 8) {
       alert("A senha deve ter no mínimo 8 caracteres.");
-    } else {
+    }else if(senha != 'urubu1000'){
+      alert('Verifique sua senha.');
+    }else {
       input_senha.value = '';
       input_email.value = '';
       window.location.href = "index.html";
