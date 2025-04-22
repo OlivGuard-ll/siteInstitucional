@@ -70,6 +70,7 @@
     var email = input_email.value;
     var tamanhoEmail = email.length;
     var mensagem = "";
+    var cont = 0;
 
     for(var i = 0; i < tamanhoEmail; i++){
             var caractereAtual;
@@ -77,7 +78,8 @@
 
             if (caractereAtual == '@'){
                 mensagem = '';
-            } else {
+                cont++
+            } else if (caractereAtual != '@' && cont == 0) {
                 mensagem = 'Email Inválido';
             }
                   
