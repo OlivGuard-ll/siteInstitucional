@@ -46,8 +46,8 @@
       <div class="container">
         <img src="../imgs/img/logoOlivGuard 2.svg" alt="" srcset="" />
         <h3>Ainda não tem uma conta? Crie a sua e junte-se a nós nessa jornada.</h3>
-        <button>
-          <a href="cadastro.html">Cadastre-se</a>
+        <button onclick="cadastro()">
+          Cadastre-se
         </button>
       </div>
     </section>
@@ -57,6 +57,11 @@
 </html>
 
 <script>
+
+  function cadastro(){
+    window.location.href = "./cadastro.html";
+  }
+
   var contagem = 3;
   function validar() {
     var email = input_email.value;
