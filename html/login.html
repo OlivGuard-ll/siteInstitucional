@@ -68,11 +68,10 @@
       alert("A senha deve ter no mínimo 8 caracteres.");
     }
     if (email == "caramico@gmail.com" && senha == "urubu1000" && (contagem == 3 || contagem == 2 || contagem == 1)){
-      alert("✅ Usuário autenticado com sucesso!");
       contagem = 0; 
       input_email.value = "";
       input_senha.value = "";
-      window.location.href = "index.html";
+      window.location.href = "dashboard.html";
     } else {
       contagem -= 1;
       if(contagem <= 0){
