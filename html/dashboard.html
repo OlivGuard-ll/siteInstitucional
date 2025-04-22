@@ -19,7 +19,6 @@
           <li><a href="sobre.html">Sobre nós</a></li>
           <li><a href="simulador.html">Simulador Financeiro</a></li>
           <li><a href="dashboardSemLogin.html">Dashboard</a></li>
-          <li><a href="login.html">Login</a></li>
         </ul>
       </nav>
     </header>
@@ -33,44 +32,31 @@
                 <div class="grafico-cabecalho">
                   <h1>Umidade ao longo do dia</h1>
                 </div>
-                <div class="kpi-cards">
-                  <div class="kpi-card">
-                    <h4>Umidade Média do Dia</h4>
-                    <p>53.0%</p>
-                  </div>
-                  <div class="kpi-card">
-                    <h4>Máxima Umidade no Dia</h4>
-                    <p>70%</p>
-                  </div>
-                  <div class="kpi-card">
-                    <h4>Mínima Umidade no Dia</h4>
-                    <p>39%</p>
-                  </div>
-                </div>
+
                 <canvas id="graficoDiario"></canvas>
               </div>
             </div>
 
             <div class="indicadores-container">
               <div class="indicador">
-                <h2>Título</h2>
-                <p>Dado</p>
+                <h4>Umidade Média do Dia</h4>
+                <p class="longoDia">53.0%</p>
               </div>
               <div class="indicador">
-                <h2>Título</h2>
-                <p>Dado</p>
+                <h4>Máxima Umidade no Dia</h4>
+                <p class="longoDia">70%</p>
               </div>
               <div class="indicador">
-                <h2>Título</h2>
-                <p>Dado</p>
+                <h4>Mínima Umidade no Dia</h4>
+                <p class="longoDia">39%</p>
               </div>
               <div class="indicador">
-                <h2>Título</h2>
-                <p>Dado</p>
+                <h4>Medições Abaixo de 40%</h4>
+                <p class="diaria">1460</p>
               </div>
               <div class="indicador">
-                <h2>Título</h2>
-                <p>Dado</p>
+                <h4>Medições Acima de 80%</h4>
+                <p class="diaria">350</p>
               </div>
             </div>
           </div>
@@ -81,26 +67,13 @@
                 <div class="grafico-cabecalho">
                   <h1>Média diária de umidade</h1>
                 </div>
-                <div class="kpi-cards">
-                  <div class="kpi-card">
-                    <h4>Medições Abaixo de 40%</h4>
-                    <p>1460</p>
-                  </div>
-                  <div class="kpi-card">
-                    <h4>Medições 40% e 60%</h4>
-                    <p>2190</p>
-                  </div>
-                  <div class="kpi-card">
-                    <h4>Medições Acima de 80%</h4>
-                    <p>350</p>
-                  </div>
-                </div>
                 <canvas id="graficoMensal"></canvas>
               </div>
             </div>
 
             <div class="grafico-pizza-container">
               <div class="grafico-box-resumo">
+                <h1>Média anual da faixa recomendada</h1>
                 <div class="grafico-pizza">
                   <canvas id="graficoAnual"></canvas>
                 </div>
@@ -117,7 +90,12 @@
         <input type="text" id="input_nome" />
 
         <label for="input_telefone">Telefone:</label>
-        <input type="text" id="input_telefone" oninput="validar()" maxlength="15" />
+        <input
+          type="text"
+          id="input_telefone"
+          oninput="validar()"
+          maxlength="15"
+        />
 
         <label for="input_email">Email:</label>
         <input type="text" id="input_email" />
@@ -144,14 +122,29 @@
       new Chart(document.getElementById("graficoDiario"), {
         type: "line",
         data: {
-          labels: ["00h", "02h", "04h", "06h", "08h", "10h", "12h", "14h", "16h", "18h", "20h", "22h"],
-          datasets: [{
-            label: "Umidade (%)",
-            data: [58, 56, 53, 52, 50, 42, 39, 60, 65, 70, 67, 64],
-            borderColor: "blue",
-            fill: false,
-            tension: 0.3,
-          }],
+          labels: [
+            "00h",
+            "02h",
+            "04h",
+            "06h",
+            "08h",
+            "10h",
+            "12h",
+            "14h",
+            "16h",
+            "18h",
+            "20h",
+            "22h",
+          ],
+          datasets: [
+            {
+              label: "Umidade (%)",
+              data: [58, 56, 53, 52, 50, 42, 39, 60, 65, 70, 67, 64],
+              borderColor: "#00008b",
+              fill: false,
+              tension: 0.3,
+            },
+          ],
         },
         options: { responsive: true },
       });
@@ -160,11 +153,16 @@
         type: "bar",
         data: {
           labels: Array.from({ length: 30 }, (_, i) => `Dia ${i + 1}`),
-          datasets: [{
-            label: "Média Diária de Umidade (%)",
-            data: [50, 55, 40, 35, 38, 45, 50, 42, 58, 60, 45, 48, 52, 55, 65, 70, 60, 63, 50, 52, 40, 41, 55, 49, 48, 43, 45, 44, 42, 51],
-            backgroundColor: "teal",
-          }],
+          datasets: [
+            {
+              label: "Média Diária de Umidade (%)",
+              data: [
+                50, 55, 40, 35, 38, 45, 50, 42, 58, 60, 45, 48, 52, 55, 65, 70,
+                60, 63, 50, 52, 40, 41, 55, 49, 48, 43, 45, 44, 42, 51,
+              ],
+              backgroundColor: "#006400",
+            },
+          ],
         },
         options: { responsive: true },
       });
@@ -172,12 +170,19 @@
       new Chart(document.getElementById("graficoAnual"), {
         type: "pie",
         data: {
-          labels: ["Abaixo da faixa ideal", "Dentro da faixa ideal", "Acima da faixa ideal"],
-          datasets: [{
-            label: "Distribuição Anual de Umidade",
-            data: [1460, 2190, 350],
-            backgroundColor: ["red", "green", "orange"],
-          }],
+          labels: [
+            "Abaixo da faixa ideal",
+            "Dentro da faixa ideal",
+            "Acima da faixa ideal",
+          ],
+          datasets: [
+            {
+              label: "Distribuição Anual de Umidade",
+              data: [1460, 2190, 350],
+              backgroundColor: ["#8b0000", "#006400", "#ff8c00"],
+              
+            },
+          ],
         },
         options: { responsive: true },
       });

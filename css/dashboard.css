@@ -41,6 +41,7 @@
 
 .grafico-box-resumo {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -71,8 +72,8 @@
 
 .grafico-pizza {
   position: relative;
-  width: 250px;
-  height: 250px;
+  width: 300px;
+  height: 300px;
   margin-bottom: 20px;
 }
 
@@ -104,4 +105,12 @@
 .indicador p {
   font-size: 1.4rem;
   font-weight: bold;
+}
+
+.longoDia {
+  color: #00008b;
+}
+
+.diaria {
+  color: #006400;
 }
