@@ -32,9 +32,11 @@
         <h1>Faça seu login</h1>
 
         <div class="containerInputs">
-          <input type="text" id="input_email" placeholder="E-mail" />
+          <input type="text" id="input_email" oninput="analisar()" placeholder="E-mail" />
           <input type="password" id="input_senha" placeholder="Senha"/>
         </div>
+
+        <div id="div_mensagem"></div>
 
         <button onclick="validar()">
           Entrar
@@ -63,15 +65,38 @@
   }
 
   var contagem = 3;
+
+  function analisar(){
+    var email = input_email.value;
+    var tamanhoEmail = email.length;
+    var mensagem = "";
+
+    for(var i = 0; i < tamanhoEmail; i++){
+            var caractereAtual;
+            caractereAtual = email[i];
+
+            if (caractereAtual == '@'){
+                mensagem = '';
+            } else {
+                mensagem = 'Email Inválido';
+            }
+                  
+        }
+
+        div_mensagem.innerHTML = mensagem;
+  }
+
   function validar() {
     var email = input_email.value;
     var senha = input_senha.value;
+
     if (email != "caramico@gmail.com") {
       alert("Verifique seu e-mail.");
     }
     if(senha.length < 8) {
       alert("A senha deve ter no mínimo 8 caracteres.");
     }
+
     if (email == "caramico@gmail.com" && senha == "urubu1000" && (contagem == 3 || contagem == 2 || contagem == 1)){
       contagem = 0; 
       input_email.value = "";
