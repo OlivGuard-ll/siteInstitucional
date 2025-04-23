@@ -55,6 +55,29 @@
   margin-bottom: 10px;
 }
 
+.container-faixa-recomendada{
+  display: flex;
+  gap: 30px;
+}
+
+.informacao{
+  width: 100%;
+  background-color: #d3d3d3;
+  align-items: flex-end;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.informacao h5{
+  font-size: 1.2rem;
+}
+
+.informacao p{
+  font-size: 1rem;
+}
+
 .kpi-cards {
   display: flex;
   justify-content: space-between;

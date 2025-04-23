@@ -88,12 +88,12 @@
 .imagemExemplo {
   width: 40%;
   height: 40vh;
-  background-color: var(--verdeClaro);
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
+}
+
+.imagemExemplo img{
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
 }
 
 .nossoProduto {
