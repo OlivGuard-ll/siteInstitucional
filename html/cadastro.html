@@ -17,9 +17,7 @@
     <nav>
       <ul>
         <li><a href="index.html">Início</a></li>
-        <li><a href="sobre.html">Sobre nós</a></li>
         <li><a href="simulador.html">Simulador Financeiro</a></li>
-        <li><a href="dashboardSemLogin.html">Dashboard</a></li>
         <li><a href="login.html">Login</a></li>
       </ul>
     </nav>
@@ -36,12 +34,12 @@
         <div class="inputs" id="etapa1">
           <h1>Crie sua conta!</h1>
           <h3>Preencha com seus dados</h3>
-          <input type="text" placeholder="Razão social" id="inp_razao" />
-          <input type="text" oninput="formatarFor()" id="inp_cnpj" placeholder="CNPJ" maxlength="18" />
-          <input type="text" placeholder="Email" id="inp_email" />
-          <input type="password" placeholder="Senha" id="inp_senha" />
-          <input type="password" placeholder="Repetir senha" id="inp_senha_repeticao" />
-          <input type="text" placeholder="Telefone" id="inp_telefone" oninput="formatarFor()" maxlength="15" />
+          <input type="text" placeholder="Razão social" id="inp_razao" required/>
+          <input type="text" oninput="formatarFor()" id="inp_cnpj" placeholder="CNPJ" maxlength="18" required/>
+          <input type="text" placeholder="Email" id="inp_email" required/>
+          <input type="password" placeholder="Senha" id="inp_senha" required/>
+          <input type="password" placeholder="Repetir senha" id="inp_senha_repeticao" required/>
+          <input type="text" placeholder="Telefone" id="inp_telefone" oninput="formatarFor()" maxlength="15" required/>
           <button onclick="proximaEtapa()">Próxima etapa</button>
           <p>Já tem uma conta? <a href="./login.html">Conecte-se</a></p>
         </div>
@@ -51,13 +49,13 @@
           <button onclick="voltarEtapa()" class="voltar">
             <img src="../imgs/icons/voltar.svg" />
           </button>
-          <input type="text" id="inp_cep" placeholder="CEP" oninput="formatarFor()" maxlength="9" />
-          <input type="text" id="inp_rua" placeholder="Rua" />
-          <input type="text" id="inp_numero" placeholder="Número" />
+          <input type="text" id="inp_cep" placeholder="CEP" oninput="formatarFor()" maxlength="9" required/>
+          <input type="text" id="inp_rua" placeholder="Rua" required/>
+          <input type="text" id="inp_numero" placeholder="Número" required/>
           <input type="text" id="inp_complemento" placeholder="Complemento (opcional)" />
-          <input type="text" id="inp_bairro" placeholder="Bairro" />
-          <input type="text" id="inp_cidade" placeholder="Cidade" />
-          <input type="text" id="inp_estado" placeholder="Estado" />
+          <input type="text" id="inp_bairro" placeholder="Bairro" required/>
+          <input type="text" id="inp_cidade" placeholder="Cidade" required/>
+          <input type="text" id="inp_estado" placeholder="Estado" required/>
           <button onclick="finalizarCadastro()">Finalizar Cadastro</button>
         </div>
       </div>

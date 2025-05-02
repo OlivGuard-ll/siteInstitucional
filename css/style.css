@@ -89,14 +89,14 @@ form button {
   background-color: var(--verdeClaro);
   border: none;
   border-radius: 5px;
-  padding: 15px 0;
+  padding: 10px 0;
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 footer form input {
   width: 100%;
-  height: 30px;
+  height: 25px;
   background-color: var(--verdeContraste);
   border: none;
   border-bottom: 1px solid #fff;
@@ -110,15 +110,15 @@ footer form input:focus {
 }
 
 .faleConosco {
-  width: 35vw;
+  width: 25vw;
   color: #fff;
 }
 
 .faleConosco h1 {
-  font-size: 4rem;
+  font-size: 2.5rem;
 }
 
 .faleConosco p {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   margin-top: 20px;
 }
