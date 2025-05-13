@@ -9,201 +9,32 @@
     <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body>
-    <header>
-      <a href="index.html">
-        <img src="../imgs/img/logoOlivGuard 1.png" alt="" />
-      </a>
-      <nav>
-        <ul>
-          <li><a href="index.html">Início</a></li>
-          <li><a href="sobre.html">Sobre nós</a></li>
-          <li><a href="simulador.html">Simulador Financeiro</a></li>
-          <li><a href="dashboard.html">Dashboard</a></li>
-        </ul>
-      </nav>
-    </header>
+
+    <aside>
+      Navbar
+    </aside>
 
     <main>
-      <section class="dashboard">
-        <div class="grafico-container">
-          <div class="top">
-            <div class="grafico-umidade-dia">
-              <div class="grafico-box">
-                <div class="grafico-cabecalho">
-                  <h1>Umidade ao longo do dia</h1>
-                </div>
+      <section class="containerIndicadores">
+        <div class="indicador">1</div>
+        <div class="indicador">2</div>
+        <div class="indicador">3</div>
+        <div class="indicador">4</div>
+        <div class="indicador">5</div>
+      </section>
 
-                <div class="container-faixa-recomendada">
-                  <div class="informacao">
-                    <h5>Recomendada</h5>
-                    <p>65%</p>
-                  </div>
+      <section class="containerMeio">
+        <div class="graficoLinha">Grafico linha</div>
 
-                  <div class="informacao">
-                    <h5>Máximo</h5>
-                    <p>80%</p>
-                  </div>
+        <div class="legenda">Legenda</div>
+      </section>
 
-                  <div class="informacao">
-                    <h5>Mínimo</h5>
-                    <p>50%</p>
-                  </div>
-
-                </div>
-
-
-                <canvas id="graficoDiario"></canvas>
-              </div>
-            </div>
-
-            <div class="indicadores-container">
-              <div class="indicador">
-                <h4>Umidade média do Dia</h4>
-                <p class="longoDia">66.0%</p>
-              </div>
-              <div class="indicador">
-                <h4>Umidade máxima do dia</h4>
-                <p class="longoDia">85%</p>
-              </div>
-              <div class="indicador">
-                <h4>Umidade mínima do dia</h4>
-                <p class="longoDia">45%</p>
-              </div>
-              <div class="indicador">
-                <h4>Média de Umidade dos últimos 30 dias</h4>
-                <p class="diaria">56%</p>
-              </div>
-              <div class="indicador">
-                <h4>Medições fora da faixa de segurança (últimos 365 dias)</h4>
-                <p class="anual">1810</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="bottom">
-            <div class="grafico-umidade-mensal">
-              <div class="grafico-box">
-                <div class="grafico-cabecalho">
-                  <h1>Média diária de umidade (Últimos 30 dias)</h1>
-                </div>
-                <canvas id="graficoMensal"></canvas>
-              </div>
-            </div>
-
-            <div class="grafico-pizza-container">
-              <div class="grafico-box-resumo">
-                <h1>Média anual da faixa recomendada</h1>
-                <div class="grafico-pizza">
-                  <canvas id="graficoAnual"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
+      <section class="containerBaixo">
+        <div class="graficoBarra">
+          Gráfico Barra
         </div>
       </section>
     </main>
 
-    <footer>
-      <form>
-        <label for="input_nome">Nome:</label>
-        <input type="text" id="input_nome" />
-
-        <label for="input_telefone">Telefone:</label>
-        <input
-          type="text"
-          id="input_telefone"
-          oninput="validar()"
-          maxlength="15"
-        />
-
-        <label for="input_email">Email:</label>
-        <input type="text" id="input_email" />
-
-        <label for="input_mensagem">Mensagem:</label>
-        <input type="text" id="input_mensagem" />
-
-        <button>Enviar</button>
-      </form>
-
-      <div class="faleConosco">
-        <h1>Fale conosco</h1>
-        <p>
-          Estamos aqui para ajudar! Se você tiver dúvidas, sugestões ou precisar
-          de mais informações sobre os nossos serviços de monitoramento de solo,
-          entre em contato conosco. Preencha o formulário ao lado e nossa equipe
-          entrará em contato o mais breve possível. A OlivGuard valoriza seu
-          feedback e está sempre à disposição para atender suas necessidades.
-        </p>
-      </div>
-    </footer>
-
-    <script>
-      new Chart(document.getElementById("graficoDiario"), {
-        type: "line",
-        data: {
-          labels: [
-            "00h",
-            "02h",
-            "04h",
-            "06h",
-            "08h",
-            "10h",
-            "12h",
-            "14h",
-            "16h",
-            "18h",
-            "20h",
-            "22h",
-          ],
-          datasets: [
-            {
-              label: "Umidade (%)",
-              data: [70, 68, 66, 65, 60, 55, 50, 45, 85, 83, 78, 72],
-              borderColor: "#00008b",
-              fill: false,
-              tension: 0.3,
-            },
-          ],
-        },
-        options: { responsive: true },
-      });
-
-      new Chart(document.getElementById("graficoMensal"), {
-        type: "bar",
-        data: {
-          labels: Array.from({ length: 30 }, (_, i) => `Dia ${i + 1}`),
-          datasets: [
-            {
-              label: "Média Diária de Umidade (%)",
-              data: [
-                68, 64, 60, 55, 50, 49, 47, 45, 44, 42, 52, 58, 64, 78, 85, 83,
-                80, 76, 70, 65, 60, 58, 55, 53, 51, 48, 45, 43, 41, 50,
-              ],
-              backgroundColor: "#006400",
-            },
-          ],
-        },
-        options: { responsive: true },
-      });
-
-      new Chart(document.getElementById("graficoAnual"), {
-        type: "pie",
-        data: {
-          labels: [
-            "Abaixo da faixa ideal",
-            "Dentro da faixa ideal",
-            "Acima da faixa ideal",
-          ],
-          datasets: [
-            {
-              label: "Distribuição Anual de Umidade",
-              data: [1460, 2190, 350],
-              backgroundColor: ["#8b0000", "#006400", "#ff8c00"],
-            },
-          ],
-        },
-        options: { responsive: true },
-      });
-    </script>
   </body>
 </html>
